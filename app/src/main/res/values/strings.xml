@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BMI Calculator</string>
+    <string name="health_tips">Health Tips</string>
+    <string name="bmi_results">BMI Results</string>
+    <string name="bmi_info">BMI Info</string>
+    <string name="about_app">About App</string>
+</resources>
