@@ -4,7 +4,7 @@ Jetpack Compose app based on inspiration from the flutter app [BMI-Calculator](h
 ## Development Tools
 - [Android Studio Canary](https://developer.android.com/studio/preview)
 - [Jepack Compose](https://developer.android.com/jetpack/compose)
-- Compose Version : **0.1.0-dev12**
+- Compose Version : **0.1.0-dev13**
 - Material Icons : `implementation("androidx.ui:ui-material-icons-extended:$compose_version")`
 
 ## Brief Introducation
