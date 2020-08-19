@@ -1,7 +1,8 @@
 package com.github.sagar2093.bmicompose
 
-import androidx.compose.Model
-import androidx.compose.frames.ModelList
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import com.github.sagar2093.bmicompose.util.BmiCalculator
 
 /**
@@ -14,14 +15,9 @@ sealed class Screen {
     object Tips : Screen()
 }
 
-// todo replace @Model implementation
-@Model
 object ComposeStatus {
-    var previousScreen: Screen? = null
-    var currentScreen: Screen =
-        Screen.Home
-    val favorites = ModelList<String>()
-    val selectedTopics = ModelList<String>()
+    var currentScreen by mutableStateOf<Screen>(Screen.Home)
+    var previousScreen by mutableStateOf<Screen?>(null)
 }
 
 /**

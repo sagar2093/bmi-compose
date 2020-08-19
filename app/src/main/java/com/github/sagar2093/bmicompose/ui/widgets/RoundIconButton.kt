@@ -1,22 +1,21 @@
 package com.github.sagar2093.bmicompose.ui.widgets
 
-import androidx.compose.Composable
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.Icon
-import androidx.ui.foundation.clickable
-import androidx.ui.foundation.shape.corner.CircleShape
-import androidx.ui.graphics.Color
-import androidx.ui.graphics.vector.VectorAsset
-import androidx.ui.layout.padding
-import androidx.ui.layout.preferredSize
-import androidx.ui.material.Card
-import androidx.ui.material.MaterialTheme
-import androidx.ui.material.icons.Icons
-import androidx.ui.material.icons.outlined.Notifications
-import androidx.ui.material.ripple.ripple
+import androidx.compose.foundation.Icon
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.preferredSize
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Notifications
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.VectorAsset
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
-import androidx.ui.unit.Dp
-import androidx.ui.unit.dp
 import com.github.sagar2093.bmicompose.theme.AppTheme
 
 private val RippleRadius = 24.dp
@@ -33,11 +32,10 @@ fun RoundIconButton(
 ) {
     Card(
         modifier = modifier
-            .ripple(radius = RippleRadius)
             .clickable(onClick = onClick)
-            .plus(IconButtonSizeModifier),
+            .then(IconButtonSizeModifier),
         shape = CircleShape,
-        color = backgroundColor,
+        backgroundColor = backgroundColor,
         elevation = elevation
     ) {
         Icon(vectorAsset, tint = tint)

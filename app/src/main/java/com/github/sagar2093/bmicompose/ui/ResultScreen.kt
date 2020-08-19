@@ -1,49 +1,45 @@
 package com.github.sagar2093.bmicompose.ui
 
-import androidx.compose.Composable
-import androidx.compose.remember
-import androidx.ui.core.Alignment
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.Box
-import androidx.ui.foundation.ContentGravity
-import androidx.ui.foundation.Text
-import androidx.ui.foundation.shape.corner.CircleShape
-import androidx.ui.graphics.Color
-import androidx.ui.layout.*
-import androidx.ui.material.Card
-import androidx.ui.material.MaterialTheme
-import androidx.ui.material.Scaffold
-import androidx.ui.material.ScaffoldState
-import androidx.ui.material.icons.Icons
-import androidx.ui.material.icons.outlined.ArrowBack
-import androidx.ui.material.icons.outlined.Person
-import androidx.ui.res.stringResource
-import androidx.ui.text.SpanStyle
-import androidx.ui.text.TextStyle
-import androidx.ui.text.annotatedString
-import androidx.ui.text.font.FontWeight
-import androidx.ui.text.withStyle
+import androidx.compose.foundation.Box
+import androidx.compose.foundation.ContentGravity
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.ArrowBack
+import androidx.compose.material.icons.outlined.Person
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.annotatedString
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
-import androidx.ui.unit.TextUnit
-import androidx.ui.unit.dp
-import com.github.sagar2093.bmicompose.ui.widgets.RoundIconButton
 import com.github.sagar2093.bmicalculator.ui.widgets.Toolbar
 import com.github.sagar2093.bmicompose.R
 import com.github.sagar2093.bmicompose.Screen
 import com.github.sagar2093.bmicompose.navigateTo
 import com.github.sagar2093.bmicompose.theme.AppTheme
 import com.github.sagar2093.bmicompose.theme.accentColor
+import com.github.sagar2093.bmicompose.ui.widgets.RoundIconButton
 import com.github.sagar2093.bmicompose.ui.widgets.RoundedButton
 import com.github.sagar2093.bmicompose.util.BmiCalculator
 
 @Composable
 fun ResultScreen(
-    scaffoldState: ScaffoldState = remember { ScaffoldState() },
+    scaffoldState: ScaffoldState = rememberScaffoldState(),
     bmi: BmiCalculator
 ) {
     Scaffold(
         scaffoldState = scaffoldState,
-        topAppBar = {
+        topBar = {
             Toolbar(
                 title = stringResource(R.string.bmi_results),
                 navigationIcon = {
@@ -73,13 +69,13 @@ private fun Content(result: BmiCalculator) {
         Card(
             shape = CircleShape,
             elevation = 4.dp,
-            color = MaterialTheme.colors.background,
+            backgroundColor = MaterialTheme.colors.background,
             modifier = childModifier
         ) {
             Card(
                 shape = CircleShape,
                 modifier = Modifier.padding(32.dp),
-                color = accentColor
+                backgroundColor = accentColor
             ) {
                 Box(
                     shape = CircleShape,

@@ -1,35 +1,39 @@
 package com.github.sagar2093.bmicompose.ui
 
-import androidx.compose.*
-import androidx.ui.core.Alignment
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.Text
-import androidx.ui.graphics.Color
-import androidx.ui.layout.*
-import androidx.ui.layout.ColumnScope.gravity
-import androidx.ui.material.Scaffold
-import androidx.ui.material.ScaffoldState
-import androidx.ui.material.Slider
-import androidx.ui.material.icons.Icons
-import androidx.ui.material.icons.filled.Add
-import androidx.ui.material.icons.filled.Remove
-import androidx.ui.material.icons.outlined.Notifications
-import androidx.ui.material.icons.outlined.Person
-import androidx.ui.res.stringResource
-import androidx.ui.text.SpanStyle
-import androidx.ui.text.TextStyle
-import androidx.ui.text.annotatedString
-import androidx.ui.text.withStyle
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.ColumnScope.gravity
+import androidx.compose.material.Scaffold
+import androidx.compose.material.ScaffoldState
+import androidx.compose.material.Slider
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Remove
+import androidx.compose.material.icons.outlined.Notifications
+import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material.rememberScaffoldState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.state
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.annotatedString
+import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
-import androidx.ui.unit.TextUnit
-import androidx.ui.unit.dp
-import com.github.sagar2093.bmicompose.ui.widgets.RoundIconButton
 import com.github.sagar2093.bmicalculator.ui.widgets.Toolbar
 import com.github.sagar2093.bmicompose.R
 import com.github.sagar2093.bmicompose.Screen
 import com.github.sagar2093.bmicompose.navigateTo
 import com.github.sagar2093.bmicompose.theme.AppTheme
 import com.github.sagar2093.bmicompose.theme.accentColor
+import com.github.sagar2093.bmicompose.ui.widgets.RoundIconButton
 import com.github.sagar2093.bmicompose.ui.widgets.RoundedButton
 import com.github.sagar2093.bmicompose.ui.widgets.RoundedCard
 import com.github.sagar2093.bmicompose.ui.widgets.RoundedToggleButton
@@ -37,11 +41,11 @@ import com.github.sagar2093.bmicompose.util.BmiCalculator
 
 @Composable
 fun HomeScreen(
-    scaffoldState: ScaffoldState = remember { ScaffoldState() }
+    scaffoldState: ScaffoldState = rememberScaffoldState()
 ) {
     Scaffold(
         scaffoldState = scaffoldState,
-        topAppBar = {
+        topBar = {
             Toolbar(
                 title = stringResource(R.string.app_name),
                 navigationIcon = {
@@ -192,7 +196,7 @@ private fun HeightSelector(
                 onValueChange = { heightState.value = it.toInt() },
                 modifier = Modifier.fillMaxWidth().padding(8.dp),
                 valueRange = (1f..272f),
-                color = accentColor
+                activeTrackColor = accentColor
             )
             Text(
                 text = height,

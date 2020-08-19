@@ -1,14 +1,11 @@
 package com.github.sagar2093.bmicalculator.ui.widgets
 
-import androidx.compose.Composable
-import androidx.ui.core.Modifier
-import androidx.ui.layout.Spacer
-import androidx.ui.layout.padding
-import androidx.ui.layout.preferredHeight
-import androidx.ui.layout.preferredWidth
-import androidx.ui.material.Divider
-import androidx.ui.material.MaterialTheme
-import androidx.ui.unit.dp
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.preferredHeight
+import androidx.compose.foundation.layout.preferredWidth
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun EmptyHeight() = Spacer(Modifier.preferredHeight(16.dp))

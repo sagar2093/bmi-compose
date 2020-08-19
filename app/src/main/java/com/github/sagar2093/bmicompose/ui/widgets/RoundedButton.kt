@@ -1,19 +1,19 @@
 package com.github.sagar2093.bmicompose.ui.widgets
 
-import androidx.compose.Composable
-import androidx.compose.MutableState
-import androidx.compose.mutableStateOf
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.Text
-import androidx.ui.foundation.shape.corner.RoundedCornerShape
-import androidx.ui.graphics.Color
-import androidx.ui.layout.Row
-import androidx.ui.layout.preferredHeight
-import androidx.ui.material.Button
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.preferredHeight
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
-import androidx.ui.unit.Dp
-import androidx.ui.unit.TextUnit
-import androidx.ui.unit.dp
 import com.github.sagar2093.bmicalculator.ui.widgets.EmptyWidth
 import com.github.sagar2093.bmicompose.theme.AppTheme
 import com.github.sagar2093.bmicompose.theme.accentColor
@@ -54,7 +54,7 @@ fun RoundedToggleButton(
 ) {
     Button(
         onClick = onClick,
-        modifier = modifier + IconButtonSizeModifier,
+        modifier = modifier then  IconButtonSizeModifier,
         shape = RoundedCornerShape(16.dp),
         backgroundColor = if (state.value) activeColor else inactiveColor,
         contentColor = if (state.value) foregroundColor else Color.Gray

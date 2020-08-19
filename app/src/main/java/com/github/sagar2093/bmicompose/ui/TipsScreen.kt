@@ -1,49 +1,46 @@
 package com.github.sagar2093.bmicompose.ui
 
-import androidx.compose.Composable
-import androidx.compose.remember
-import androidx.ui.core.Alignment
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.*
-import androidx.ui.foundation.shape.corner.CircleShape
-import androidx.ui.foundation.shape.corner.RoundedCornerShape
-import androidx.ui.graphics.Color
-import androidx.ui.graphics.vector.VectorAsset
-import androidx.ui.layout.*
-import androidx.ui.material.Card
-import androidx.ui.material.MaterialTheme
-import androidx.ui.material.Scaffold
-import androidx.ui.material.ScaffoldState
-import androidx.ui.material.icons.Icons
-import androidx.ui.material.icons.filled.ChevronRight
-import androidx.ui.material.icons.filled.DirectionsBike
-import androidx.ui.material.icons.filled.DirectionsRun
-import androidx.ui.material.icons.filled.Waves
-import androidx.ui.material.icons.outlined.ArrowBack
-import androidx.ui.material.icons.outlined.Person
-import androidx.ui.res.stringResource
-import androidx.ui.text.TextStyle
-import androidx.ui.text.font.FontWeight
+import androidx.compose.foundation.*
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ChevronRight
+import androidx.compose.material.icons.filled.DirectionsBike
+import androidx.compose.material.icons.filled.DirectionsRun
+import androidx.compose.material.icons.filled.Waves
+import androidx.compose.material.icons.outlined.ArrowBack
+import androidx.compose.material.icons.outlined.Person
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.VectorAsset
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
-import androidx.ui.unit.TextUnit
-import androidx.ui.unit.dp
-import com.github.sagar2093.bmicompose.theme.AppTheme
-import com.github.sagar2093.bmicompose.theme.accentColor
 import com.github.sagar2093.bmicalculator.ui.widgets.EmptyHeight
-import com.github.sagar2093.bmicompose.ui.widgets.RoundIconButton
-import com.github.sagar2093.bmicompose.ui.widgets.RoundedCard
 import com.github.sagar2093.bmicalculator.ui.widgets.Toolbar
 import com.github.sagar2093.bmicompose.R
 import com.github.sagar2093.bmicompose.Screen
 import com.github.sagar2093.bmicompose.navigateTo
+import com.github.sagar2093.bmicompose.theme.AppTheme
+import com.github.sagar2093.bmicompose.theme.accentColor
+import com.github.sagar2093.bmicompose.ui.widgets.RoundIconButton
+import com.github.sagar2093.bmicompose.ui.widgets.RoundedCard
 
 @Composable
 fun TipsScreen(
-    scaffoldState: ScaffoldState = remember { ScaffoldState() }
+    scaffoldState: ScaffoldState = rememberScaffoldState()
 ) {
     Scaffold(
         scaffoldState = scaffoldState,
-        topAppBar = {
+        topBar = {
             Toolbar(
                 title = stringResource(R.string.health_tips),
                 navigationIcon = {
@@ -65,7 +62,7 @@ fun TipsScreen(
 
 @Composable
 private fun Content() {
-    VerticalScroller(modifier = Modifier.padding(12.dp)) {
+    ScrollableColumn(modifier = Modifier.padding(12.dp)) {
         RoundedCard(modifier = Modifier.fillMaxWidth().padding(4.dp)) {
             Row(
                 modifier = Modifier
@@ -75,12 +72,12 @@ private fun Content() {
                 Card(
                     shape = CircleShape,
                     elevation = 4.dp,
-                    color = MaterialTheme.colors.background
+                    backgroundColor = MaterialTheme.colors.background
                 ) {
                     Card(
                         shape = CircleShape,
                         modifier = Modifier.padding(16.dp),
-                        color = accentColor
+                        backgroundColor = accentColor
                     ) {
                         Box(
                             shape = CircleShape,

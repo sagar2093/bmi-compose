@@ -2,11 +2,11 @@ package com.github.sagar2093.bmicompose
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.Composable
-import androidx.ui.animation.Crossfade
-import androidx.ui.core.setContent
-import androidx.ui.material.MaterialTheme
-import androidx.ui.material.Surface
+import androidx.compose.animation.Crossfade
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.setContent
 import com.github.sagar2093.bmicompose.theme.AppTheme
 import com.github.sagar2093.bmicompose.ui.HomeScreen
 import com.github.sagar2093.bmicompose.ui.InfoScreen

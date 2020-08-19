@@ -1,16 +1,16 @@
 package com.github.sagar2093.bmicompose.ui.widgets
 
-import androidx.compose.Composable
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.Text
-import androidx.ui.foundation.shape.corner.RoundedCornerShape
-import androidx.ui.graphics.Color
-import androidx.ui.layout.padding
-import androidx.ui.material.Card
-import androidx.ui.material.MaterialTheme
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
-import androidx.ui.unit.Dp
-import androidx.ui.unit.dp
 import com.github.sagar2093.bmicompose.theme.AppTheme
 import com.github.sagar2093.bmicompose.ui.textStyle
 
@@ -24,7 +24,7 @@ fun RoundedCard(
     Card(
         modifier = modifier,
         shape = RoundedCornerShape(16.dp),
-        color = color,
+        backgroundColor = color,
         elevation = elevation
     ) {
         content()

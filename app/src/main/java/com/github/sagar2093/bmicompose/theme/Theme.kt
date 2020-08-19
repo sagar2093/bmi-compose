@@ -1,12 +1,12 @@
 package com.github.sagar2093.bmicompose.theme
 
-import androidx.compose.Composable
-import androidx.ui.graphics.Color
-import androidx.ui.material.MaterialTheme
-import androidx.ui.material.darkColorPalette
-import androidx.ui.material.lightColorPalette
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.darkColors
+import androidx.compose.material.lightColors
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 
-private val LightThemeColors = lightColorPalette(
+private val LightThemeColors = lightColors(
     primary = backgroundColor,
     primaryVariant = foregroundColor,
     onPrimary = foregroundColor,
@@ -26,7 +26,7 @@ private val LightThemeColors = lightColorPalette(
     error = Red800*/
 )
 
-private val DarkThemeColors = darkColorPalette(
+private val DarkThemeColors = darkColors(
     primary = Red300,
     primaryVariant = Red700,
     onPrimary = Color.Black,
