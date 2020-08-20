@@ -15,7 +15,7 @@ import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.state
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -96,9 +96,9 @@ private fun Content() {
                 modifier = Modifier.padding(start = 8.dp).weight(1f)
             )
         }
-        val heightState: MutableState<Int> = state { 170 }
-        val weightState: MutableState<Int> = state { 62 }
-        val ageState: MutableState<Int> = state { 20 }
+        val heightState = remember { mutableStateOf(170) }
+        val weightState: MutableState<Int> = remember { mutableStateOf(62) }
+        val ageState: MutableState<Int> = remember { mutableStateOf(20) }
         PickerView(
             modifier = Modifier
                 .weight(1f)

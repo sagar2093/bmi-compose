@@ -33,7 +33,7 @@ fun RoundedButton(
 ) {
     Button(
         onClick = onClick,
-        modifier = modifier + IconButtonSizeModifier,
+        modifier = modifier then IconButtonSizeModifier,
         shape = RoundedCornerShape(16.dp),
         backgroundColor = backGroundColor,
         contentColor = contentColor,
