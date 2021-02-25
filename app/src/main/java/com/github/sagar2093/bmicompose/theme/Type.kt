@@ -2,17 +2,17 @@ package com.github.sagar2093.bmicompose.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.font.font
-import androidx.compose.ui.text.font.fontFamily
 import androidx.compose.ui.unit.sp
 import com.github.sagar2093.bmicompose.R
 
-private val regular = font(R.font.montserrat_regular)
-private val medium = font(R.font.montserrat_regular, FontWeight.W500)
-private val semibold = font(R.font.montserrat_bold, FontWeight.W600)
+private val regular = Font(R.font.montserrat_regular)
+private val medium = Font(R.font.montserrat_regular, FontWeight.W500)
+private val semibold = Font(R.font.montserrat_bold, FontWeight.W600)
 
-private val appFontFamily = fontFamily(
+private val appFontFamily = FontFamily(
     fonts = listOf(
         regular,
         medium,
@@ -20,10 +20,10 @@ private val appFontFamily = fontFamily(
     )
 )
 
-private val bodyFontFamily = fontFamily(
+private val bodyFontFamily = FontFamily(
     fonts = listOf(
-        font(R.font.montserrat_regular),
-        font(R.font.montserrat_bold, FontWeight.Bold)
+        Font(R.font.montserrat_regular),
+        Font(R.font.montserrat_bold, FontWeight.Bold)
     )
 )
 

@@ -1,14 +1,15 @@
 package com.github.sagar2093.bmicompose.theme
 
-import androidx.compose.foundation.Box
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.preferredHeight
+import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 
 val Red200 = Color(0xfff297a2)
 val Red300 = Color(0xffea6d7e)
@@ -50,7 +51,12 @@ private fun ColorDemo() {
     )
     Column {
         colors.forEach {
-            Box(backgroundColor = it, modifier = Modifier.fillMaxWidth().preferredHeight(16.dp))
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(16.dp)
+                    .background(it)
+            )
         }
     }
 }

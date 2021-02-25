@@ -1,9 +1,12 @@
 package com.github.sagar2093.bmicompose.ui
 
-import androidx.compose.foundation.*
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ChevronRight
@@ -13,19 +16,17 @@ import androidx.compose.material.icons.filled.Waves
 import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.VectorAsset
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import com.github.sagar2093.bmicalculator.ui.widgets.EmptyHeight
-import com.github.sagar2093.bmicalculator.ui.widgets.Toolbar
 import com.github.sagar2093.bmicompose.R
 import com.github.sagar2093.bmicompose.Screen
 import com.github.sagar2093.bmicompose.navigateTo
@@ -33,6 +34,7 @@ import com.github.sagar2093.bmicompose.theme.AppTheme
 import com.github.sagar2093.bmicompose.theme.accentColor
 import com.github.sagar2093.bmicompose.ui.widgets.RoundIconButton
 import com.github.sagar2093.bmicompose.ui.widgets.RoundedCard
+import com.github.sagar2093.bmicompose.ui.widgets.Toolbar
 
 @Composable
 fun TipsScreen(
@@ -45,16 +47,16 @@ fun TipsScreen(
                 title = stringResource(R.string.health_tips),
                 navigationIcon = {
                     RoundIconButton(
-                        vectorAsset = Icons.Outlined.ArrowBack,
+                        imageVector = Icons.Outlined.ArrowBack,
                         onClick = { navigateTo(Screen.Home) }
                     )
                 },
                 actions = {
-                    RoundIconButton(vectorAsset = Icons.Outlined.Person, onClick = { })
+                    RoundIconButton(imageVector = Icons.Outlined.Person, onClick = { })
                 }
             )
         },
-        bodyContent = {
+        content = {
             Content()
         }
     )
@@ -62,12 +64,20 @@ fun TipsScreen(
 
 @Composable
 private fun Content() {
-    ScrollableColumn(modifier = Modifier.padding(12.dp)) {
-        RoundedCard(modifier = Modifier.fillMaxWidth().padding(4.dp)) {
+    Column(
+        modifier = Modifier
+            .padding(12.dp)
+            .verticalScroll(rememberScrollState())
+    ) {
+        RoundedCard(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(4.dp)
+        ) {
             Row(
                 modifier = Modifier
                     .padding(16.dp)
-                    .gravity(align = Alignment.CenterHorizontally)
+                    .align(Alignment.CenterHorizontally)
             ) {
                 Card(
                     shape = CircleShape,
@@ -80,11 +90,13 @@ private fun Content() {
                         backgroundColor = accentColor
                     ) {
                         Box(
-                            shape = CircleShape,
                             modifier = Modifier
-                                .preferredSize(72.dp)
-                                .padding(16.dp),
-                            backgroundColor = MaterialTheme.colors.background
+                                .background(
+                                    color = MaterialTheme.colors.background,
+                                    shape = CircleShape
+                                )
+                                .size(72.dp)
+                                .padding(16.dp)
                         )
                     }
                 }
@@ -92,7 +104,7 @@ private fun Content() {
                     modifier = Modifier
                         .weight(1f)
                         .padding(start = 16.dp)
-                        .gravity(Alignment.CenterVertically)
+                        .align(Alignment.CenterVertically)
                 ) {
                     Text(text = "Hi Buddy!", style = textStyle.copy(fontWeight = FontWeight.Bold))
                     Text(text = "I am your mentor to give you good tips", style = textStyle)
@@ -109,7 +121,7 @@ private fun Content() {
             EmptyHeight()
             ActivityCard(
                 text = it.first,
-                asset = it.second,
+                imageVector = it.second,
                 modifier = Modifier.fillMaxWidth()
             )
         }
@@ -117,29 +129,34 @@ private fun Content() {
 }
 
 @Composable
-private fun ActivityCard(asset: VectorAsset, text: String, modifier: Modifier = Modifier) {
+private fun ActivityCard(imageVector: ImageVector, text: String, modifier: Modifier = Modifier) {
     RoundedCard(modifier = modifier.padding(4.dp)) {
         Row(
-            modifier = Modifier.fillMaxWidth().padding(16.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
             horizontalArrangement = Arrangement.Center
         ) {
             Box(
-                backgroundColor = Color.LightGray.copy(alpha = 0.5f),
-                shape = RoundedCornerShape(8.dp)
+                Modifier.background(
+                    color = Color.LightGray.copy(alpha = 0.5f),
+                    shape = RoundedCornerShape(8.dp)
+                )
             ) {
                 Image(
-                    asset = asset,
-                    modifier = Modifier.preferredSize(48.dp)
+                    imageVector = imageVector,
+                    contentDescription = null,
+                    modifier = Modifier.size(48.dp)
                 )
             }
             Text(
                 text = text,
                 modifier = Modifier
                     .weight(1f)
-                    .gravity(align = Alignment.CenterVertically)
+                    .align(Alignment.CenterVertically)
                     .padding(horizontal = 16.dp),
                 style = TextStyle(
-                    fontSize = TextUnit.Sp(18),
+                    fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.Black.copy(
                         alpha = 0.8f
@@ -147,8 +164,9 @@ private fun ActivityCard(asset: VectorAsset, text: String, modifier: Modifier = 
                 )
             )
             Icon(
-                asset = Icons.Default.ChevronRight,
-                modifier = Modifier.gravity(align = Alignment.CenterVertically),
+                imageVector = Icons.Default.ChevronRight,
+                contentDescription = null,
+                modifier = Modifier.align(Alignment.CenterVertically),
                 tint = Color.Black
             )
         }

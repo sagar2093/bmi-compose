@@ -1,17 +1,12 @@
 package com.github.sagar2093.bmicompose.ui
 
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.ColumnScope.gravity
-import androidx.compose.material.Scaffold
-import androidx.compose.material.ScaffoldState
-import androidx.compose.material.Slider
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.outlined.Person
-import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -20,14 +15,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.annotatedString
-import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.text.*
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
-import com.github.sagar2093.bmicalculator.ui.widgets.Toolbar
+import androidx.compose.ui.unit.sp
+import com.github.sagar2093.bmicompose.ui.widgets.Toolbar
 import com.github.sagar2093.bmicompose.R
 import com.github.sagar2093.bmicompose.Screen
 import com.github.sagar2093.bmicompose.navigateTo
@@ -50,16 +43,16 @@ fun HomeScreen(
                 title = stringResource(R.string.app_name),
                 navigationIcon = {
                     RoundIconButton(
-                        vectorAsset = Icons.Outlined.Notifications,
+                        imageVector = Icons.Outlined.Notifications,
                         onClick = { navigateTo(Screen.Tips) }
                     )
                 },
                 actions = {
-                    RoundIconButton(vectorAsset = Icons.Outlined.Person, onClick = { })
+                    RoundIconButton(imageVector = Icons.Outlined.Person, onClick = { })
                 }
             )
         },
-        bodyContent = {
+        content = {
             Content()
         }
     )
@@ -68,11 +61,15 @@ fun HomeScreen(
 @Composable
 private fun Content() {
     Column(
-        modifier = Modifier.padding(16.dp).fillMaxSize(),
+        modifier = Modifier
+            .padding(16.dp)
+            .fillMaxSize(),
         verticalArrangement = Arrangement.SpaceAround
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 8.dp),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             val maleState = mutableStateOf(true)
@@ -84,7 +81,9 @@ private fun Content() {
                     maleState.value = true
                     femaleState.value = false
                 },
-                modifier = Modifier.padding(end = 8.dp).weight(1f)
+                modifier = Modifier
+                    .padding(end = 8.dp)
+                    .weight(1f)
             )
             RoundedToggleButton(
                 state = femaleState,
@@ -93,7 +92,9 @@ private fun Content() {
                     femaleState.value = true
                     maleState.value = false
                 },
-                modifier = Modifier.padding(start = 8.dp).weight(1f)
+                modifier = Modifier
+                    .padding(start = 8.dp)
+                    .weight(1f)
             )
         }
         val heightState = remember { mutableStateOf(170) }
@@ -117,7 +118,9 @@ private fun Content() {
                 )
                 navigateTo(Screen.Result(bmi))
             },
-            modifier = Modifier.fillMaxWidth().padding(top = 16.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 16.dp)
         )
     }
 }
@@ -136,7 +139,7 @@ private fun PickerView(
         HeightSelector(
             modifier = Modifier
                 .weight(1f)
-                .gravity(align = Alignment.CenterHorizontally)
+                .align(Alignment.CenterHorizontally)
                 .padding(bottom = 8.dp)
                 .fillMaxHeight(),
             heightState = heightState
@@ -173,17 +176,17 @@ private fun HeightSelector(
     modifier: Modifier = Modifier,
     heightState: MutableState<Int>
 ) {
-    val height = annotatedString {
+    val height = buildAnnotatedString {
         withStyle(
-            style = SpanStyle(fontSize = TextUnit.Sp(32))
+            style = SpanStyle(fontSize = 32.sp)
         ) { append(heightState.value.toString()) }
         append(" cm")
     }
     RoundedCard(modifier = modifier) {
         Column(
             modifier = Modifier
-                .fillMaxHeight()
-                .gravity(Alignment.CenterHorizontally),
+                .fillMaxHeight(),
+                //.gravity(Alignment.CenterHorizontally),
             verticalArrangement = Arrangement.Center
         ) {
             Text(
@@ -194,9 +197,13 @@ private fun HeightSelector(
             Slider(
                 value = heightState.value.toFloat(),
                 onValueChange = { heightState.value = it.toInt() },
-                modifier = Modifier.fillMaxWidth().padding(8.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
                 valueRange = (1f..272f),
-                activeTrackColor = accentColor
+                colors = SliderDefaults.colors(
+                    activeTrackColor = accentColor
+                )
             )
             Text(
                 text = height,
@@ -233,12 +240,12 @@ private fun NumberPicker(
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 modifier = ColumnChildModifier
             ) {
-                RoundIconButton(vectorAsset = Icons.Default.Add, onClick = {
+                RoundIconButton(imageVector = Icons.Default.Add, onClick = {
                     if (pickerState.value < range.last) {
                         pickerState.value = pickerState.value + 1
                     }
                 })
-                RoundIconButton(vectorAsset = Icons.Default.Remove, onClick = {
+                RoundIconButton(imageVector = Icons.Default.Remove, onClick = {
                     if (pickerState.value > range.first) {
                         pickerState.value = pickerState.value - 1
                     }
@@ -258,12 +265,12 @@ private fun ScreenPreview() {
 
 private val LabelStyle = TextStyle(
     color = Color.Black.copy(alpha = 0.6f),
-    fontSize = TextUnit.Sp(18)
+    fontSize = 18.sp
 )
 
 private val ValueStyle = TextStyle(
     color = Color.Black.copy(alpha = 0.9f),
-    fontSize = TextUnit.Sp(32)
+    fontSize = 32.sp
 )
 
-private val ColumnChildModifier = Modifier.gravity(Alignment.CenterHorizontally).padding(8.dp)
+private val ColumnChildModifier = Modifier.padding(8.dp)    //.gravity(Alignment.CenterHorizontally)

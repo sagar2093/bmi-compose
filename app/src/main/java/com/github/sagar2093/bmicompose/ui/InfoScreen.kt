@@ -1,15 +1,12 @@
 package com.github.sagar2093.bmicompose.ui
 
-import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Divider
-import androidx.compose.material.Scaffold
-import androidx.compose.material.ScaffoldState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.material.icons.outlined.Person
-import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,12 +15,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.util.fastForEachIndexed
-import androidx.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import com.github.sagar2093.bmicalculator.ui.widgets.EmptyHeight2
-import com.github.sagar2093.bmicalculator.ui.widgets.Toolbar
 import com.github.sagar2093.bmicompose.R
 import com.github.sagar2093.bmicompose.Screen
 import com.github.sagar2093.bmicompose.navigateTo
@@ -31,10 +27,11 @@ import com.github.sagar2093.bmicompose.theme.AppTheme
 import com.github.sagar2093.bmicompose.theme.accentColor
 import com.github.sagar2093.bmicompose.ui.widgets.RoundIconButton
 import com.github.sagar2093.bmicompose.ui.widgets.RoundedCard
+import com.github.sagar2093.bmicompose.ui.widgets.Toolbar
 import com.github.sagar2093.bmicompose.util.BmiCalculator
 
 val textStyle = TextStyle(
-    fontSize = TextUnit.Sp(16),
+    fontSize = 16.sp,
     color = Color.Black.copy(alpha = 0.8f)
 )
 
@@ -50,16 +47,16 @@ fun InfoScreen(
                 title = stringResource(R.string.bmi_info),
                 navigationIcon = {
                     RoundIconButton(
-                        vectorAsset = Icons.Outlined.ArrowBack,
+                        imageVector = Icons.Outlined.ArrowBack,
                         onClick = { navigateTo(Screen.Result(bmi)) }
                     )
                 },
                 actions = {
-                    RoundIconButton(vectorAsset = Icons.Outlined.Person, onClick = { })
+                    RoundIconButton(imageVector = Icons.Outlined.Person, onClick = { })
                 }
             )
         },
-        bodyContent = {
+        content = {
             Content(bmi)
         }
     )
@@ -67,24 +64,30 @@ fun InfoScreen(
 
 @Composable
 private fun Content(bmi: BmiCalculator) {
-    ScrollableColumn(
-        modifier = Modifier.padding(12.dp).fillMaxSize()
+    Column(
+        modifier = Modifier
+            .padding(12.dp)
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
     ) {
         RoundedCard(modifier = Modifier.padding(4.dp)) {
             Row(
-                modifier = Modifier.padding(24.dp).fillMaxWidth(),
+                modifier = Modifier
+                    .padding(24.dp)
+                    .fillMaxWidth()
+                    .align(Alignment.CenterHorizontally),
                 horizontalArrangement = Arrangement.SpaceEvenly,
-                verticalGravity = Alignment.CenterVertically
+                //verticalGravity = Alignment.CenterVertically
             ) {
                 Text(
                     text = "Your BMI",
-                    style = textStyle.copy(fontSize = TextUnit.Sp(18))
+                    style = textStyle.copy(fontSize = 18.sp)
                 )
                 Text(
                     text = bmi.bmiString,
                     style = textStyle.copy(
                         fontWeight = FontWeight.SemiBold,
-                        fontSize = TextUnit.Sp(32)
+                        fontSize = 32.sp
                     )
                 )
                 Text(
@@ -105,7 +108,7 @@ private fun Content(bmi: BmiCalculator) {
         )
         RoundedCard(modifier = Modifier.padding(4.dp)) {
             Column {
-                infoList.fastForEachIndexed { index, pair ->
+                infoList.forEachIndexed { index, pair ->
                     InfoItemView(
                         info = pair,
                         hasDivider = index != infoList.lastIndex

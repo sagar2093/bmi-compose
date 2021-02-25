@@ -1,26 +1,27 @@
 package com.github.sagar2093.bmicompose.ui.widgets
 
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.preferredHeight
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import com.github.sagar2093.bmicalculator.ui.widgets.EmptyWidth
 import com.github.sagar2093.bmicompose.theme.AppTheme
 import com.github.sagar2093.bmicompose.theme.accentColor
 import com.github.sagar2093.bmicompose.theme.backgroundColor
 import com.github.sagar2093.bmicompose.theme.foregroundColor
 
-private val IconButtonSizeModifier = Modifier.preferredHeight(50.dp)
+private val IconButtonSizeModifier = Modifier.height(50.dp)
 
 @Composable
 fun RoundedButton(
@@ -33,13 +34,15 @@ fun RoundedButton(
 ) {
     Button(
         onClick = onClick,
-        modifier = modifier then IconButtonSizeModifier,
         shape = RoundedCornerShape(16.dp),
-        backgroundColor = backGroundColor,
-        contentColor = contentColor,
-        elevation = elevation
+        modifier = modifier then IconButtonSizeModifier,
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = backGroundColor,
+            contentColor = contentColor
+        ),
+        elevation = ButtonDefaults.elevation(elevation)
     ) {
-        Text(text = text, fontSize = TextUnit.Companion.Sp(18))
+        Text(text = text, fontSize = 18.sp)
     }
 }
 
@@ -54,12 +57,14 @@ fun RoundedToggleButton(
 ) {
     Button(
         onClick = onClick,
-        modifier = modifier then  IconButtonSizeModifier,
         shape = RoundedCornerShape(16.dp),
-        backgroundColor = if (state.value) activeColor else inactiveColor,
-        contentColor = if (state.value) foregroundColor else Color.Gray
+        modifier = modifier then IconButtonSizeModifier,
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = if (state.value) activeColor else inactiveColor,
+            contentColor = if (state.value) foregroundColor else Color.Gray
+        )
     ) {
-        Text(text = text, fontSize = TextUnit.Sp(18))
+        Text(text = text, fontSize = 18.sp)
     }
 }
 
@@ -82,6 +87,5 @@ private fun ToggleButtonPreview() {
             EmptyWidth()
             RoundedToggleButton(state = falseState, text = "False", onClick = {})
         }
-
     }
 }
