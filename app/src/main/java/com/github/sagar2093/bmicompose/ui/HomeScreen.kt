@@ -15,21 +15,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.*
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.github.sagar2093.bmicompose.ui.widgets.Toolbar
 import com.github.sagar2093.bmicompose.R
 import com.github.sagar2093.bmicompose.Screen
 import com.github.sagar2093.bmicompose.navigateTo
 import com.github.sagar2093.bmicompose.theme.AppTheme
 import com.github.sagar2093.bmicompose.theme.accentColor
-import com.github.sagar2093.bmicompose.ui.widgets.RoundIconButton
-import com.github.sagar2093.bmicompose.ui.widgets.RoundedButton
-import com.github.sagar2093.bmicompose.ui.widgets.RoundedCard
-import com.github.sagar2093.bmicompose.ui.widgets.RoundedToggleButton
+import com.github.sagar2093.bmicompose.ui.widgets.*
 import com.github.sagar2093.bmicompose.util.BmiCalculator
 
 @Composable

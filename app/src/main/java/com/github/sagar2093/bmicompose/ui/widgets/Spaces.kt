@@ -1,4 +1,4 @@
-package com.github.sagar2093.bmicalculator.ui.widgets
+package com.github.sagar2093.bmicompose.ui.widgets
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
