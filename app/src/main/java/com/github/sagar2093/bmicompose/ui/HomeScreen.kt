@@ -185,7 +185,8 @@ private fun HeightSelector(
             modifier = Modifier
                 .fillMaxHeight(),
                 //.gravity(Alignment.CenterHorizontally),
-            verticalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
                 text = "Height",
@@ -222,7 +223,8 @@ private fun NumberPicker(
     RoundedCard(modifier = modifier) {
         Column(
             modifier = Modifier,
-            verticalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.spacedBy(8.dp,Alignment.CenterVertically),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
                 text = label,
@@ -236,7 +238,7 @@ private fun NumberPicker(
             )
             Row(
                 horizontalArrangement = Arrangement.SpaceEvenly,
-                modifier = ColumnChildModifier
+                modifier = ColumnChildModifier.fillMaxWidth()
             ) {
                 RoundIconButton(imageVector = Icons.Default.Add, onClick = {
                     if (pickerState.value < range.last) {

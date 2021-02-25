@@ -73,10 +73,9 @@ private fun Content(bmi: BmiCalculator) {
             Row(
                 modifier = Modifier
                     .padding(24.dp)
-                    .fillMaxWidth()
-                    .align(Alignment.CenterHorizontally),
-                horizontalArrangement = Arrangement.SpaceEvenly,
-                //verticalGravity = Alignment.CenterVertically
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterHorizontally),
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
                     text = "Your BMI",
@@ -93,7 +92,8 @@ private fun Content(bmi: BmiCalculator) {
                     text = bmi.result,
                     style = textStyle.copy(
                         color = accentColor,
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 18.sp
                     )
                 )
             }

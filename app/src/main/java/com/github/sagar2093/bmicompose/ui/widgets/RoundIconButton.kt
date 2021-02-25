@@ -1,6 +1,7 @@
 package com.github.sagar2093.bmicompose.ui.widgets
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Card
@@ -30,7 +31,7 @@ fun RoundIconButton(
     elevation: Dp = 4.dp
 ) {
     Card(
-        modifier = modifier
+        modifier = modifier.padding(all = 4.dp)
             .clickable(onClick = onClick)
             .then(IconButtonSizeModifier),
         shape = CircleShape,
